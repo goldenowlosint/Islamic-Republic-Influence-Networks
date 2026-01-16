@@ -47,7 +47,7 @@ The dataset currently includes approximately **4,816 accounts** across two disti
 | File              | Accounts | Description                                                                          |
 | ----------------- | -------- | ------------------------------------------------------------------------------------ |
 | `IR-Network.json` | ~2,900   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media |
-| `MEK.json`        | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content |
+| `MEK.json`        | ~1,900   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content |
 
 ### Network Descriptions
 
