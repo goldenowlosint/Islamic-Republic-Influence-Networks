@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import TwemojiText from '../components/TwemojiText';
 import { useParams, useNavigate } from 'react-router-dom';
 import rawData from '../Data/IR-Network.json';
 import { Card, Grid, Title, Text, Metric, Flex, Icon, Button, Badge } from '@tremor/react';
@@ -55,7 +56,9 @@ const UserDetailPage = () => {
                         )}
                     </div>
 
-                    <Title className="text-2xl text-slate-100">{user.name}</Title>
+                    <Title className="text-2xl text-slate-100">
+                        <TwemojiText text={user.name} />
+                    </Title>
                     <Text className="text-blue-400 font-mono">@{user.username}</Text>
 
                     <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -69,9 +72,9 @@ const UserDetailPage = () => {
                         )}
                     </div>
 
-                    <p className="mt-6 text-slate-400 text-sm leading-relaxed max-w-xs">
-                        {user.description || "No biography available."}
-                    </p>
+                    <div className="mt-6 text-slate-400 text-sm leading-relaxed max-w-xs">
+                        <TwemojiText text={user.description || "No biography available."} />
+                    </div>
 
                     <a
                         href={`https://twitter.com/${user.username}`}

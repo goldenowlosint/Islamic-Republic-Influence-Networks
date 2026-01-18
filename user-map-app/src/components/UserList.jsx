@@ -1,4 +1,4 @@
-import React from 'react';
+import TwemojiText from './TwemojiText';
 
 const UserList = ({ region, onClose }) => {
     if (!region) return null;
@@ -34,11 +34,15 @@ const UserList = ({ region, onClose }) => {
                             </div>
 
                             <div className="flex-1 min-w-0">
-                                <h3 className="font-semibold text-gray-100 truncate text-base">{user.name}</h3>
+                                <h3 className="font-semibold text-gray-100 truncate text-base">
+                                    <TwemojiText text={user.name} />
+                                </h3>
                                 <p className="text-sm text-blue-400 font-medium truncate">@{user.username}</p>
 
                                 {user.description && (
-                                    <p className="mt-2 text-sm text-slate-400 line-clamp-2 leading-relaxed">{user.description}</p>
+                                    <div className="mt-2 text-sm text-slate-400 line-clamp-2 leading-relaxed">
+                                        <TwemojiText text={user.description} />
+                                    </div>
                                 )}
 
                                 <div className="mt-3 flex items-center gap-4 text-xs text-slate-500 font-medium border-t border-slate-700/50 pt-3">

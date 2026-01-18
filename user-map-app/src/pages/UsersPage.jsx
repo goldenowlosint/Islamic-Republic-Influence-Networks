@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import TwemojiText from '../components/TwemojiText';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import rawData from '../Data/IR-Network.json';
@@ -236,7 +237,9 @@ const UsersPage = () => {
                                             </div>
                                         )}
                                         <div className="truncate">
-                                            <Text className="font-medium text-slate-200 truncate">{user.name}</Text>
+                                            <Text className="font-medium text-slate-200 truncate">
+                                                <TwemojiText text={user.name} />
+                                            </Text>
                                             <Text className="text-xs text-slate-500 truncate">@{user.username}</Text>
                                         </div>
                                     </div>
