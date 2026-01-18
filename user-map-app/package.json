@@ -1,13 +1,16 @@
 {
-  "name": "user-map-app",
+  "name": "IR-Influense-network-visulized",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "homepage": "https://freeirandev.github.io/IR-Influense-network-visulized",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
