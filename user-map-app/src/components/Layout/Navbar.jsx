@@ -11,14 +11,16 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed left-0 top-0 h-screen w-20 bg-slate-900/90 backdrop-blur-xl border-r border-slate-700/50 flex flex-col items-center py-8 z-[2000] shadow-2xl">
-            <div className="mb-12">
+        <nav className="fixed left-0 top-0 h-screen w-20 bg-slate-900/90 backdrop-blur-xl border-r border-slate-700/50 flex flex-col items-center z-[2000] shadow-2xl overflow-y-auto custom-scrollbar">
+            {/* Top Logo Section with padding */}
+            <div className="pt-8 mb-12 flex-none">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
                     <span className="text-white font-bold text-xl">U</span>
                 </div>
             </div>
 
-            <div className="flex flex-col gap-6 w-full px-3">
+            {/* Navigation Items */}
+            <div className="flex flex-col gap-6 w-full px-3 pb-8 flex-none">
                 {navItems.map((item) => (
                     <NavLink
                         key={item.path}
