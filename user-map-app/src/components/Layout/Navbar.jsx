@@ -11,7 +11,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed left-0 top-0 h-screen w-20 bg-slate-900/90 backdrop-blur-xl border-r border-slate-700/50 flex flex-col items-center z-[2000] shadow-2xl overflow-y-auto custom-scrollbar">
+        <nav className="fixed left-0 top-0 h-screen w-20 bg-slate-900/90 backdrop-blur-xl border-r border-slate-700/50 flex flex-col items-center z-[2000] shadow-2xl">
             {/* Top Logo Section with padding */}
             <div className="pt-8 mb-12 flex-none">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
