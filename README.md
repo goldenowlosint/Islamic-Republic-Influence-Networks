@@ -36,7 +36,7 @@ Use of this data is **strictly limited** to:
 
 This dataset is the result of systematic collection and analysis of publicly available Twitter (X) account metadata. It documents accounts exhibiting observable patterns consistent with amplification activities across multiple political influence ecosystems operating in the Persian-language information space.
 
-The dataset currently includes approximately **4,816 accounts** across two distinct network clusters, identified through graph-based analysis of public engagement data.
+The dataset currently includes approximately **7,100 accounts** across three datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
 
 > **Note:** The term "network" is used in a technical, analytical sense referring to graph relationships and interaction patterns. It does not imply organizational membership, formal coordination, or command-and-control structures. See the [Legal Disclaimer](#-legal-ethical-and-methodological-disclaimer) for full details.
 
@@ -44,10 +44,11 @@ The dataset currently includes approximately **4,816 accounts** across two disti
 
 ## 📁 Dataset Contents
 
-| File              | Accounts | Description                                                                          |
-| ----------------- | -------- | ------------------------------------------------------------------------------------ |
-| `IR-Network.json` | ~2,900   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media |
-| `MEK.json`        | ~1,900   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content |
+| File                  | Accounts | Description                                                                              |
+| --------------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `IR-Network.json`     | ~2,900   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
+| `MEK.json`            | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content     |
+| `White-Internet.json` | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata  |
 
 ### Network Descriptions
 
@@ -56,6 +57,9 @@ The dataset currently includes approximately **4,816 accounts** across two disti
 **MEK** — Accounts exhibiting observable engagement patterns with content related to the Mojahedin-e Khalq (MEK), an exiled opposition organization. The MEK is a formerly armed group that was designated as a terrorist organization by multiple governments (including the United States until 2012 and the European Union until 2009) before being delisted. This dataset documents observed amplification patterns only and does not attribute any account to MEK membership, coordination, or formal affiliation.
 
 Both network clusters represent opposing political positions but exhibit similar observable engagement patterns. The term "network" is used in a technical, graph-analytical sense and does not imply organizational structure, command relationships, or coordinated intent.
+
+**White Internet** — Accounts listed in the open-source White Internet database, which aggregates publicly visible account metadata and inferred attributes. Inclusion indicates presence in the source listing only and should not be treated as evidence of affiliation, intent, or activity.
+Source: https://github.com/tasokait/white_internet_database (white_internet.xlsx). The upstream notes indicate the list is not actively maintained.
 
 ---
 
@@ -98,6 +102,14 @@ Each entry contains the following fields:
 - **Profile images intentionally excluded**: `profile_pic_url` and `profile_banner_url` are set to `null` by design to prevent biometric identification risks
 - **No tweet content**: Dataset contains only account-level metadata, not individual tweets
 - **Nullable fields**: Some fields may be `null` depending on public availability at time of collection
+
+### White Internet Schema Notes
+
+`White-Internet.json` includes account handles, display names, username-change history, account status, device type, location indicators, inferred gender, and a permanent user ID (stored as a string), plus optional same-person fields when the source dataset flagged potential overlaps.
+Usernames retain the leading `@` from the source list; remove it for cross-dataset joins.
+Location and gender are inferred from platform signals and should be treated as probabilistic.
+
+The `location_status` field uses reliability codes (`continent_only`, `iran`, `non_iran_only`) to reflect how confidently a country could be inferred; entries that are not `iran` are less reliable for geographic inference. The `same_person_account` field captures linked handles when provided, and `same_person_detected` is set to `true` only when the source flagged likely overlaps. Some fields may explicitly be `unknown` where the source used unmapped or missing values—these should be treated as unknowns, not negative assertions.
 
 ---
 
