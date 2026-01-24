@@ -36,7 +36,7 @@ Use of this data is **strictly limited** to:
 
 This dataset is the result of systematic collection and analysis of publicly available Twitter (X) account metadata. It documents accounts exhibiting observable patterns consistent with amplification activities across multiple political influence ecosystems operating in the Persian-language information space.
 
-The dataset currently includes approximately **7,100 accounts** across three datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
+The dataset currently includes approximately **7,600 accounts** across three datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
 
 > **Note:** The term "network" is used in a technical, analytical sense referring to graph relationships and interaction patterns. It does not imply organizational membership, formal coordination, or command-and-control structures. See the [Legal Disclaimer](#-legal-ethical-and-methodological-disclaimer) for full details.
 
@@ -46,7 +46,7 @@ The dataset currently includes approximately **7,100 accounts** across three dat
 
 | File                  | Accounts | Description                                                                              |
 | --------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `IR-Network.json`     | ~2,900   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
+| `IR-Network.json`     | ~3,400   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
 | `MEK.json`            | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content     |
 | `White-Internet.json` | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata  |
 
