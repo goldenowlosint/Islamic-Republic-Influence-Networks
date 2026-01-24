@@ -1,4 +1,4 @@
-# Mapping Islamic Republic Regime in Iran-Related Online Influence Network on X
+# Mapping Islamic Republic Regime in Iran-Related Online Influence Networks
 
 ## ⚠️ Responsible Use Required
 
@@ -34,9 +34,9 @@ Use of this data is **strictly limited** to:
 
 ## 📖 Overview
 
-This dataset is the result of systematic collection and analysis of publicly available Twitter (X) account metadata. It documents accounts exhibiting observable patterns consistent with amplification activities across multiple political influence ecosystems operating in the Persian-language information space.
+This dataset is the result of systematic collection and analysis of publicly available social media account metadata from **X (Twitter)** and **Instagram**. It documents accounts exhibiting observable patterns consistent with amplification activities across multiple political influence ecosystems operating in the Persian-language information space.
 
-The dataset currently includes approximately **7,600 accounts** across three datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
+The dataset currently includes approximately **10,700 accounts** across four datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
 
 > **Note:** The term "network" is used in a technical, analytical sense referring to graph relationships and interaction patterns. It does not imply organizational membership, formal coordination, or command-and-control structures. See the [Legal Disclaimer](#-legal-ethical-and-methodological-disclaimer) for full details.
 
@@ -44,19 +44,22 @@ The dataset currently includes approximately **7,600 accounts** across three dat
 
 ## 📁 Dataset Contents
 
-| File                  | Accounts | Description                                                                              |
-| --------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `IR-Network.json`     | ~3,400   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
-| `MEK.json`            | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content     |
-| `White-Internet.json` | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata  |
+| File                       | Platform  | Accounts | Description                                                                              |
+| -------------------------- | --------- | -------- | ---------------------------------------------------------------------------------------- |
+| `IR-X-Network.json`        | X/Twitter | ~3,400   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
+| `IR-Instagram-Network.json`| Instagram | ~3,100   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated content   |
+| `MEK.json`                 | X/Twitter | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content     |
+| `White-Internet.json`      | X/Twitter | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata  |
 
 ### Network Descriptions
 
-**IR-Network** — Accounts exhibiting observable engagement patterns with official Islamic Republic media channels (state TV, news agencies, government figures). Patterns were identified based on publicly available interaction data; inclusion does not constitute a determination of affiliation, coordination, or intent.
+**IR-X-Network** — X (Twitter) accounts exhibiting observable engagement patterns with official Islamic Republic media channels (state TV, news agencies, government figures). Patterns were identified based on publicly available interaction data; inclusion does not constitute a determination of affiliation, coordination, or intent.
 
-**MEK** — Accounts exhibiting observable engagement patterns with content related to the Mojahedin-e Khalq (MEK), an exiled opposition organization. The MEK is a formerly armed group that was designated as a terrorist organization by multiple governments (including the United States until 2012 and the European Union until 2009) before being delisted. This dataset documents observed amplification patterns only and does not attribute any account to MEK membership, coordination, or formal affiliation.
+**IR-Instagram-Network** — Instagram accounts exhibiting observable engagement patterns with content aligned with Islamic Republic state narratives and affiliated media. Similar to the X network, patterns were identified through publicly available interaction data. Contact information has been redacted for privacy protection.
 
-Both network clusters represent opposing political positions but exhibit similar observable engagement patterns. The term "network" is used in a technical, graph-analytical sense and does not imply organizational structure, command relationships, or coordinated intent.
+**MEK** — X (Twitter) accounts exhibiting observable engagement patterns with content related to the Mojahedin-e Khalq (MEK), an exiled opposition organization. The MEK is a formerly armed group that was designated as a terrorist organization by multiple governments (including the United States until 2012 and the European Union until 2009) before being delisted. This dataset documents observed amplification patterns only and does not attribute any account to MEK membership, coordination, or formal affiliation.
+
+Both IR and MEK network clusters represent opposing political positions but exhibit similar observable engagement patterns. The term "network" is used in a technical, graph-analytical sense and does not imply organizational structure, command relationships, or coordinated intent.
 
 **White Internet** — Accounts listed in the open-source White Internet database, which aggregates publicly visible account metadata and inferred attributes. Inclusion indicates presence in the source listing only and should not be treated as evidence of affiliation, intent, or activity.
 Source: https://github.com/tasokait/white_internet_database (white_internet.xlsx). The upstream notes indicate the list is not actively maintained.
@@ -65,7 +68,9 @@ Source: https://github.com/tasokait/white_internet_database (white_internet.xlsx
 
 ## 🗂️ Data Structure
 
-Each entry contains the following fields:
+### X (Twitter) Schema
+
+Each entry in `IR-X-Network.json` and `MEK.json` contains the following fields:
 
 ```json
 {
@@ -97,10 +102,32 @@ Each entry contains the following fields:
 }
 ```
 
+### Instagram Schema
+
+Each entry in `IR-Instagram-Network.json` contains the following fields:
+
+```json
+{
+  "full_name": "Display Name",
+  "id": "1234567890",
+  "is_new": true,
+  "is_private": false,
+  "is_verified": false,
+  "latest_reel_media": 0,
+  "username": "example_user",
+  "follower_count": 1893,
+  "following_count": 2104,
+  "biography": "Account bio text",
+  "contact_phone_number": null,
+  "has_highlight_reels": false
+}
+```
+
 ### Field Notes
 
 - **Profile images intentionally excluded**: `profile_pic_url` and `profile_banner_url` are set to `null` by design to prevent biometric identification risks
-- **No tweet content**: Dataset contains only account-level metadata, not individual tweets
+- **Contact information redacted**: `contact_phone_number` is set to `null` in Instagram data to protect privacy
+- **No post content**: Dataset contains only account-level metadata, not individual posts or tweets
 - **Nullable fields**: Some fields may be `null` depending on public availability at time of collection
 
 ### White Internet Schema Notes
@@ -117,7 +144,7 @@ The `location_status` field uses reliability codes (`continent_only`, `iran`, `n
 
 ### Collection Approach
 
-Data was collected exclusively from **publicly accessible information** on the Twitter (X) platform through automated retrieval of account metadata. Collection focused on accounts exhibiting statistically observable engagement patterns with content from channels publicly identified as state-affiliated or organization-affiliated.
+Data was collected exclusively from **publicly accessible information** on **X (Twitter)** and **Instagram** platforms through automated retrieval of account metadata. Collection focused on accounts exhibiting statistically observable engagement patterns with content from channels publicly identified as state-affiliated or organization-affiliated.
 
 > **Note:** Collection and inclusion are based solely on publicly observable behavioral patterns. No claim is made regarding the identity, intent, nationality, affiliation, or motivations of any account holder.
 
@@ -175,7 +202,7 @@ This dataset is **not** intended for:
 
 ### 1. Purpose of the Project
 
-This open-source repository documents and analyzes publicly observable online behavior on X (formerly Twitter) related to political narratives associated with the Islamic Republic regime in Iran.
+This open-source repository documents and analyzes publicly observable online behavior on **X (formerly Twitter)** and **Instagram** related to political narratives associated with the Islamic Republic regime in Iran.
 
 The project is intended solely for:
 
@@ -248,14 +275,15 @@ Multiple political ecosystems may be included for comparative research purposes,
 
 This project is designed to comply with the **EU General Data Protection Regulation (GDPR)** and standard OSINT ethical frameworks.
 
-| Compliance Measure | Description                                                        |
-| ------------------ | ------------------------------------------------------------------ |
-| Public Data Only   | All data is sourced from publicly available information on X       |
-| No Private Access  | No private communications are accessed or processed                |
-| No Sensitive Data  | No sensitive personal data is collected                            |
-| No Deanonymization | No attempt is made to deanonymize users                            |
-| No Media Storage   | Profile images and banners are intentionally excluded              |
-| Metadata Only      | No tweet content is stored; only metadata already exposed publicly |
+| Compliance Measure   | Description                                                                |
+| -------------------- | -------------------------------------------------------------------------- |
+| Public Data Only     | All data is sourced from publicly available information on X and Instagram |
+| No Private Access    | No private communications are accessed or processed                        |
+| No Sensitive Data    | No sensitive personal data is collected                                    |
+| No Deanonymization   | No attempt is made to deanonymize users                                    |
+| No Media Storage     | Profile images and banners are intentionally excluded                      |
+| Contact Info Redacted| Phone numbers in Instagram data are set to null                            |
+| Metadata Only        | No post/tweet content is stored; only metadata already exposed publicly    |
 
 Where personal data may exist incidentally (e.g., usernames or display names), it is processed under the **legitimate interest basis** for research, journalism, and public-interest documentation (**GDPR Art. 6(1)(f)**).
 
@@ -359,7 +387,7 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 For questions, corrections, or contributions, please open an issue or submit a pull request.
 
 ---
-
+ 
 <p align="center">
   <i>Last updated: January 2026</i>
 </p>
