@@ -36,7 +36,7 @@ Use of this data is **strictly limited** to:
 
 This dataset is the result of systematic collection and analysis of publicly available social media account metadata from **X (Twitter)** and **Instagram**. It documents accounts exhibiting observable patterns consistent with amplification activities across multiple political influence ecosystems operating in the Persian-language information space.
 
-The dataset currently includes approximately **10,700 accounts** across four datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
+The dataset currently includes approximately **11,600 accounts** across four datasets, identified through graph-based analysis of public engagement data alongside open-source account listings.
 
 > **Note:** The term "network" is used in a technical, analytical sense referring to graph relationships and interaction patterns. It does not imply organizational membership, formal coordination, or command-and-control structures. See the [Legal Disclaimer](#-legal-ethical-and-methodological-disclaimer) for full details.
 
@@ -44,12 +44,12 @@ The dataset currently includes approximately **10,700 accounts** across four dat
 
 ## 📁 Dataset Contents
 
-| File                       | Platform  | Accounts | Description                                                                              |
-| -------------------------- | --------- | -------- | ---------------------------------------------------------------------------------------- |
-| `IR-X-Network.json`        | X/Twitter | ~3,400   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media     |
-| `IR-Instagram-Network.json`| Instagram | ~3,100   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated content   |
-| `MEK.json`                 | X/Twitter | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content     |
-| `White-Internet.json`      | X/Twitter | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata  |
+| File                        | Platform  | Accounts | Description                                                                             |
+| --------------------------- | --------- | -------- | --------------------------------------------------------------------------------------- |
+| `IR-X-Network.json`         | X/Twitter | ~4,200   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated media    |
+| `IR-Instagram-Network.json` | Instagram | ~3,100   | Accounts exhibiting engagement patterns with Islamic Republic state-affiliated content  |
+| `MEK.json`                  | X/Twitter | ~1,800   | Accounts exhibiting engagement patterns with Mojahedin-e Khalq (MEK)-related content    |
+| `White-Internet.json`       | X/Twitter | ~2,400   | Accounts listed in the White Internet database with publicly cataloged account metadata |
 
 ### Network Descriptions
 
@@ -275,15 +275,15 @@ Multiple political ecosystems may be included for comparative research purposes,
 
 This project is designed to comply with the **EU General Data Protection Regulation (GDPR)** and standard OSINT ethical frameworks.
 
-| Compliance Measure   | Description                                                                |
-| -------------------- | -------------------------------------------------------------------------- |
-| Public Data Only     | All data is sourced from publicly available information on X and Instagram |
-| No Private Access    | No private communications are accessed or processed                        |
-| No Sensitive Data    | No sensitive personal data is collected                                    |
-| No Deanonymization   | No attempt is made to deanonymize users                                    |
-| No Media Storage     | Profile images and banners are intentionally excluded                      |
-| Contact Info Redacted| Phone numbers in Instagram data are set to null                            |
-| Metadata Only        | No post/tweet content is stored; only metadata already exposed publicly    |
+| Compliance Measure    | Description                                                                |
+| --------------------- | -------------------------------------------------------------------------- |
+| Public Data Only      | All data is sourced from publicly available information on X and Instagram |
+| No Private Access     | No private communications are accessed or processed                        |
+| No Sensitive Data     | No sensitive personal data is collected                                    |
+| No Deanonymization    | No attempt is made to deanonymize users                                    |
+| No Media Storage      | Profile images and banners are intentionally excluded                      |
+| Contact Info Redacted | Phone numbers in Instagram data are set to null                            |
+| Metadata Only         | No post/tweet content is stored; only metadata already exposed publicly    |
 
 Where personal data may exist incidentally (e.g., usernames or display names), it is processed under the **legitimate interest basis** for research, journalism, and public-interest documentation (**GDPR Art. 6(1)(f)**).
 
@@ -387,7 +387,7 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 For questions, corrections, or contributions, please open an issue or submit a pull request.
 
 ---
- 
+
 <p align="center">
   <i>Last updated: January 2026</i>
 </p>
