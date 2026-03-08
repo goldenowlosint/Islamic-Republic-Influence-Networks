@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import rawData from '../Data/IR-Network.json';
+import { useDataContext } from '../contexts/DataContext';
 import { Card, Title, Text, Metric, Badge, Button, Select, SelectItem } from '@tremor/react';
 import { CalendarIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import TimelineGraphic from '../components/TimelineGraphic';
@@ -8,16 +8,17 @@ const CalendarIconFixed = (props) => <CalendarIcon {...props} className={`w-5 h-
 const LinkIconFixed = (props) => <ArrowTopRightOnSquareIcon {...props} className={`w-3 h-3 ${props.className || ''}`} />;
 
 const TimelinePage = () => {
+    const { data } = useDataContext();
     const [selectedLocation, setSelectedLocation] = useState("All");
 
     const locations = useMemo(() => {
-        const locs = new Set(rawData.map(u => u.account_based_in || "Unknown"));
+        const locs = new Set(data.map(u => u.account_based_in || "Unknown"));
         return ["All", ...Array.from(locs).sort()];
-    }, []);
+    }, [data]);
 
     const sortedUsers = useMemo(() => {
         // Filter users who have creation_date
-        let filtered = rawData.filter(u => u.creation_date);
+        let filtered = data.filter(u => u.creation_date);
 
         if (selectedLocation !== "All") {
             if (selectedLocation === "Unknown") {
@@ -28,7 +29,7 @@ const TimelinePage = () => {
         }
 
         return filtered.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
-    }, [selectedLocation]);
+    }, [selectedLocation, data]);
 
     if (sortedUsers.length === 0 && selectedLocation === "All") {
         return (

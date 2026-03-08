@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react';
-import rawData from '../Data/IR-Network.json';
 import { Card, Grid, Title, Text, BarChart, Metric, Flex, BadgeDelta, DonutChart, Legend, LineChart } from '@tremor/react';
+import { useDataContext } from '../contexts/DataContext';
 
 const AnalyticsPage = () => {
+    const { data } = useDataContext();
 
     // Process Data for Region Stats
     const regionStats = useMemo(() => {
         const counts = {};
-        rawData.forEach(u => {
+        data.forEach(u => {
             const r = u.account_based_in || "Unknown";
             counts[r] = (counts[r] || 0) + 1;
         });
@@ -15,19 +16,19 @@ const AnalyticsPage = () => {
             .map(([name, value]) => ({ name, value }))
             .sort((a, b) => b.value - a.value)
             .slice(0, 10); // Top 10
-    }, []);
+    }, [data]);
 
     // Process Data for Top Influencers
     const topInfluencers = useMemo(() => {
-        return [...rawData]
+        return [...data]
             .sort((a, b) => b.follower_count - a.follower_count)
             .slice(0, 8) // Top 8
             .map(u => ({ name: u.username, Followers: u.follower_count }));
-    }, []);
+    }, [data]);
 
-    const totalUsers = rawData.length;
-    const totalReach = rawData.reduce((acc, u) => acc + (u.follower_count || 0), 0);
-    const avgTweets = Math.round(rawData.reduce((acc, u) => acc + (u.number_of_tweets || 0), 0) / rawData.length);
+    const totalUsers = data.length;
+    const totalReach = data.reduce((acc, u) => acc + (u.follower_count || 0), 0);
+    const avgTweets = Math.round(data.reduce((acc, u) => acc + (u.number_of_tweets || 0), 0) / data.length);
 
     const kpiData = [
         {

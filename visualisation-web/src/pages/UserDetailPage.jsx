@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import TwemojiText from '../components/TwemojiText';
 import { useParams, useNavigate } from 'react-router-dom';
-import rawData from '../Data/IR-Network.json';
+import { useDataContext } from '../contexts/DataContext';
 import { Card, Grid, Title, Text, Metric, Flex, Icon, Button, Badge } from '@tremor/react';
 import { UserIcon, MapPinIcon, CalendarIcon, ArrowLeftIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
@@ -14,10 +14,11 @@ const LinkIconFixed = (props) => <ArrowTopRightOnSquareIcon {...props} className
 const UserDetailPage = () => {
     const { username } = useParams();
     const navigate = useNavigate();
+    const { data } = useDataContext();
 
     const user = useMemo(() => {
-        return rawData.find(u => u.username?.toLowerCase() === username?.toLowerCase());
-    }, [username]);
+        return data.find(u => u.username?.toLowerCase() === username?.toLowerCase());
+    }, [username, data]);
 
     if (!user) {
         return (

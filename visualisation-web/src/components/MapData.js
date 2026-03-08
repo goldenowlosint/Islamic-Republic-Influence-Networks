@@ -1,4 +1,4 @@
-import rawData from '../Data/IR-Network.json';
+// import rawData from '../Data/IR-Network.json'; // Removed, data passed as argument
 
 // Comprehensive Coordinate Mapping
 const REGION_COORDINATES = {
@@ -125,10 +125,12 @@ const REGION_COORDINATES = {
     "Albania": { lat: 41.1533, lng: 20.1683 },
 };
 
-export const getGroupedData = () => {
+export const getGroupedData = (data) => {
     const grouped = {};
 
-    rawData.forEach(user => {
+    if (!data) return [];
+
+    data.forEach(user => {
         // Normalize: Trim whitespace and handle "iraq" vs "Iraq" via Title Case or mapping
         let rawRegion = user.account_based_in || "Unknown";
         let region = rawRegion.trim();

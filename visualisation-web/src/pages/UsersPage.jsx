@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import TwemojiText from '../components/TwemojiText';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import rawData from '../Data/IR-Network.json';
+import { useDataContext } from '../contexts/DataContext';
 import {
     Card,
     Table,
@@ -33,6 +33,7 @@ const LinkIconFixed = (props) => <ArrowTopRightOnSquareIcon {...props} className
 const UsersPage = () => {
     // 1. URL Param Management
     const [searchParams, setSearchParams] = useSearchParams();
+    const { data } = useDataContext();
 
     const searchTerm = searchParams.get('search') || '';
     const locationFilter = searchParams.get('location') || '';
@@ -43,13 +44,13 @@ const UsersPage = () => {
 
     // 2. Extract unique locations for filter
     const uniqueLocations = useMemo(() => {
-        const locs = new Set(rawData.map(u => u.account_based_in || 'Unknown'));
+        const locs = new Set(data.map(u => u.account_based_in || 'Unknown'));
         return Array.from(locs).sort();
     }, []);
 
     // 3. Filtering & Sorting Logic
     const processedUsers = useMemo(() => {
-        let result = rawData;
+        let result = data;
 
         // Search Filter
         if (searchTerm) {
@@ -86,7 +87,7 @@ const UsersPage = () => {
         });
 
         return result;
-    }, [searchTerm, locationFilter, sortBy, sortOrder]);
+    }, [searchTerm, locationFilter, sortBy, sortOrder, data]);
 
     // 4. Virtualization
     const rowVirtualizer = useVirtualizer({

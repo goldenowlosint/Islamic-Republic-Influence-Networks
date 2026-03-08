@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Map, Users, BarChart2, Clock, Menu } from 'lucide-react';
 
+import DatasetSelector from '../DatasetSelector';
+
 const Navbar = () => {
     const navItems = [
         { path: '/', icon: Map, label: 'Map' },
@@ -40,6 +42,16 @@ const Navbar = () => {
                         </span>
                     </NavLink>
                 ))}
+            </div>
+
+            {/* Dataset Selector at bottom */}
+            <div className="mt-auto pb-6 px-1 w-full flex justify-center">
+                {/* Since Navbar is collapsed, we might need a compact selector or a trigger. 
+                     However, the user asked for a select "to contain all the available data set".
+                     Putting it in the collapsed sidebar might be tight.
+                     Let's re-read Layout.jsx. Layout creates a flex row with Navbar on left.
+                     Maybe putting it in Layout.jsx top right is better as per plan "DatasetSelector to the top-right corner".
+                 */}
             </div>
         </nav>
     );

@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { Loader2 } from 'lucide-react';
+import { DataProvider } from './contexts/DataContext';
 
 // Lazy load pages to reduce initial bundle size
 const MapPage = lazy(() => import('./pages/MapPage'));
@@ -22,18 +23,20 @@ const LoadingFallback = () => (
 const App = () => {
   return (
     <HashRouter>
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<MapPage />} />
-            <Route path="users" element={<UsersPage />} />
-            <Route path="insights" element={<AnalyticsPage />} />
-            <Route path="timeline" element={<TimelinePage />} />
-            <Route path="user/:username" element={<UserDetailPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <DataProvider>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<MapPage />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="insights" element={<AnalyticsPage />} />
+              <Route path="timeline" element={<TimelinePage />} />
+              <Route path="user/:username" element={<UserDetailPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </DataProvider>
     </HashRouter>
   );
 };
