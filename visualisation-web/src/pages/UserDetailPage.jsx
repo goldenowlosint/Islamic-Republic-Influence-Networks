@@ -78,13 +78,14 @@ const UserDetailPage = () => {
                     </div>
 
                     <a
-                        href={`https://twitter.com/${user.username}`}
+                        href={user.platformUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-8 w-full"
+                        className="p-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition-colors duration-200"
+                        title="View Full Profile"
                     >
                         <Button size="lg" variant="primary" icon={LinkIconFixed} className="w-full">
-                            Open on Twitter
+                            Open Profile
                         </Button>
                     </a>
                 </Card>

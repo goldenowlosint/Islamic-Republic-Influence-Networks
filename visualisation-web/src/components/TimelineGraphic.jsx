@@ -132,7 +132,7 @@ const TimelineGraphic = ({ data }) => {
                 {/* Data Points */}
                 {items.map((item, idx) => {
                     const x = getXPosition(item.timestamp);
-                    const isHovered = hoveredItem && hoveredItem.user_id === item.user_id;
+                    const isHovered = hoveredItem && hoveredItem.username === item.username;
 
                     return (
                         <circle

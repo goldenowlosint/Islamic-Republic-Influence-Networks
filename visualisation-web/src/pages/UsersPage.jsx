@@ -269,9 +269,11 @@ const UsersPage = () => {
                                                 View
                                             </Button>
                                         </Link>
-                                        <a href={`https://twitter.com/${user.username}`} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
-                                            <LinkIconFixed className="w-5 h-5" />
-                                        </a>
+                                        <div className="flex justify-end gap-2">
+                                            <a href={user.platformUrl} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
+                                                <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             );

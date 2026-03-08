@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
+import {
+    normalizeTwitterData,
+    normalizeInstagramData,
+    normalizeWhiteInternetData
+} from '../utils/dataNormalizers';
 
 const DataContext = createContext();
 
@@ -12,10 +17,10 @@ export const useDataContext = () => {
 };
 
 const DATASETS = [
-    { id: 'ir-instagram', name: 'IR Instagram Network', url: '/data/IR-Instagram-Network.json' },
-    { id: 'ir-x', name: 'IR X Network', url: '/data/IR-X-Network.json' },
-    { id: 'mek', name: 'MEK Network', url: '/data/MEK.json' },
-    { id: 'white-internet', name: 'White Internet', url: '/data/White-Internet.json' },
+    { id: 'ir-instagram', name: 'IR Instagram Network', url: '/data/IR-Instagram-Network.json', normalizer: normalizeInstagramData },
+    { id: 'ir-x', name: 'IR X Network', url: '/data/IR-X-Network.json', normalizer: normalizeTwitterData },
+    { id: 'mek', name: 'MEK Network', url: '/data/MEK.json', normalizer: normalizeTwitterData },
+    { id: 'white-internet', name: 'White Internet', url: '/data/White-Internet.json', normalizer: normalizeWhiteInternetData },
 ];
 
 export const DataProvider = ({ children }) => {
@@ -36,7 +41,13 @@ export const DataProvider = ({ children }) => {
                     throw new Error(`Failed to fetch dataset: ${response.status}`);
                 }
                 const jsonData = await response.json();
-                setData(jsonData);
+
+                // Normalize the dataset so all components expect the same standard schema
+                const normalizedData = (Array.isArray(jsonData) ? jsonData : []).map(item => {
+                    return datasetInfo.normalizer ? datasetInfo.normalizer(item) : item;
+                });
+
+                setData(normalizedData);
             } catch (err) {
                 console.error("Error loading dataset:", err);
                 setError(err.message);
